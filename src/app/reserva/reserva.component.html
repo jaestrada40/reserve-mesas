@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Reserva de Mesas y Asientos</h1>
+
+  <!-- Sección para el Dueño del Restaurante -->
+  <div class="admin-section">
+    <h2>Administrar Mesas</h2>
+    <div class="agregar-mesa">
+      <input type="number" min="1" placeholder="Número de asientos" #numAsientos>
+      <button (click)="agregarMesa(numAsientos.valueAsNumber || 4)">Agregar Mesa</button>
+    </div>
+  </div>
+
+  <div class="mesas">
+    <div *ngFor="let mesa of mesas$ | async" class="mesa-container">
+      <div class="mesa">
+        <div class="mesa-info">
+          <h3>Mesa {{ mesa.id }}</h3>
+          <button
+            class="btn-mesa"
+            (click)="seleccionarMesa(mesa)"
+            [ngClass]="{'selected': mesa.seleccionada}">
+            {{ mesa.seleccionada ? 'Deseleccionar Mesa' : 'Seleccionar Toda la Mesa' }}
+          </button>
+        </div>
+        <div class="asientos">
+          <div *ngFor="let asiento of mesa.asientos" class="asiento-wrapper">
+            <button
+              class="btn-asiento"
+              (click)="seleccionarAsiento(mesa, asiento)"
+              [ngClass]="{'selected': asiento.seleccionado}">
+              {{ asiento.seleccionado ? '✓' : 'A' + asiento.id }}
+            </button>
+            <button class="btn-eliminar-asiento" (click)="eliminarAsiento(mesa.id, asiento.id)">
+              &times;
+            </button>
+          </div>
+        </div>
+
+        <!-- Botones para Administrar Asientos -->
+        <div class="admin-asientos">
+          <button class="btn-agregar-asiento" (click)="agregarAsiento(mesa.id)">Agregar Asiento</button>
+          <button class="btn-eliminar-mesa" (click)="eliminarMesa(mesa.id)">Eliminar Mesa</button>
+        </div>
+      </div>
+      <p class="estado">Estado: {{ obtenerEstadoMesa(mesa) }}</p>
+    </div>
+  </div>
+</div>

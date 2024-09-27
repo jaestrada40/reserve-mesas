@@ -1,0 +1,290 @@
+/* Contenedor Principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2em;
+}
+
+/* Sección de Administración */
+.admin-section {
+  margin-bottom: 40px;
+}
+
+.admin-section h2 {
+  color: #444;
+  margin-bottom: 15px;
+  font-size: 1.5em;
+}
+
+.agregar-mesa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.agregar-mesa input {
+  padding: 8px;
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.agregar-mesa button {
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.agregar-mesa button:hover {
+  background-color: #45a049;
+}
+
+/* Mesas */
+.mesas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mesa-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Mesa Rectangular */
+.mesa {
+  position: relative;
+  width: 250px;
+  min-height: 180px;
+  background-color: #f8f8f8;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mesa:hover {
+  transform: scale(1.02);
+}
+
+/* Información de la Mesa */
+.mesa-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mesa-info h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.btn-mesa {
+  margin-top: 10px;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-mesa:hover {
+  background-color: #1976d2;
+}
+
+.btn-mesa.selected {
+  background-color: #f44336;
+}
+
+/* Asientos */
+.asientos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.asiento-wrapper {
+  position: relative;
+  width: 50px;
+  height: 40px;
+}
+
+.btn-asiento {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 1em;
+}
+
+.btn-asiento:hover {
+  background-color: #ddd;
+  transform: translateY(-2px);
+}
+
+.btn-asiento.selected {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Botón para Eliminar Asiento */
+.btn-eliminar-asiento {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 14px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.asiento-wrapper:hover .btn-eliminar-asiento {
+  display: flex;
+}
+
+.btn-eliminar-asiento:hover {
+  background-color: #d32f2f;
+}
+
+/* Botones para Agregar Asiento y Eliminar Mesa */
+.admin-asientos {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-agregar-asiento,
+.btn-eliminar-mesa {
+  padding: 6px 10px;
+  font-size: 0.8em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-agregar-asiento {
+  background-color: #ff9800;
+  color: white;
+}
+
+.btn-agregar-asiento:hover {
+  background-color: #e68900;
+}
+
+.btn-eliminar-mesa {
+  background-color: #f44336;
+  color: white;
+}
+
+.btn-eliminar-mesa:hover {
+  background-color: #d32f2f;
+}
+
+/* Estado de la Mesa */
+.estado {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .mesa {
+    width: 200px;
+    min-height: 150px;
+  }
+
+  .btn-asiento {
+    font-size: 0.8em;
+  }
+
+  .agregar-mesa {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .asientos {
+    gap: 8px;
+  }
+
+  .asiento-wrapper {
+    width: 40px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mesas {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mesa {
+    width: 90%;
+    height: auto;
+  }
+
+  .asientos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .asiento-wrapper {
+    width: 100%;
+    max-width: 80px;
+    height: 30px;
+  }
+
+  .btn-asiento {
+    width: 100%;
+    height: 100%;
+    font-size: 0.8em;
+  }
+
+  .admin-asientos {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .btn-agregar-asiento,
+  .btn-eliminar-mesa {
+    width: 100%;
+  }
+}
